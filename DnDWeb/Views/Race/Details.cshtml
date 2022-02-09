@@ -1,0 +1,26 @@
+﻿@model DnDWeb.Models.RaceDetails
+
+@{
+    ViewData["Title"] = "Character Race Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Races</h1>
+<h2> <span>@Model.name</span> Lore and stats</h2> 
+
+    <hr />
+
+    <div>
+     <h3>Speed: @Model.speed</h3>
+
+
+    </div>
+
+
+
+
+
+<div>
+    @Html.ActionLink("Edit", "Details", new {  id = Model.index }) |
+    <a asp-action="Index">Back to List</a>
+</div>

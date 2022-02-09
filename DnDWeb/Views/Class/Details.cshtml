@@ -1,0 +1,56 @@
+﻿@model DnDWeb.Models.ClassDetail
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Class Details</h1>
+<h4>Hit Die: @Model.hit_die</h4>
+
+
+<div>
+    <h5>Starting Equipment: </h5>
+    
+    <table class="table-bordered">
+        <thead >
+            <tr>
+                <td>Item Name</td>
+                <td>Count</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model.starting_equipment)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.equipment.name, "ItemDetails", new { item.equipment.index })                
+                </td>
+                
+                <td class="text-right">@item.quantity</td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+@if (Model.spellcasting != null)
+{
+<div>
+    <div class="align-content-center">
+        <h1>Spellcasting</h1>
+    </div>
+    <br />
+    @foreach (var item in Model.spellcasting.info)
+    {
+        <h2>@item.name</h2>
+        <p>
+            @foreach (var sentence in item.desc)
+            {
+            <span class="font-italic">@sentence</span>
+            }
+        </p>
+    }
+</div>
+}
+<div>
+    <a asp-action="Index">Back to Character Class Selection</a>
+</div>
